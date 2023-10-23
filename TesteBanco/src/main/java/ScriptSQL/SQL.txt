@@ -1,0 +1,30 @@
+#create database db_pessoa;
+use db_pessoa;
+drop table tb_pessoas;
+create table tb_pessoas(
+	codigo int primary key auto_increment,
+    nome varchar(60) not null,
+    fone varchar(20),
+    email varchar(60)
+);
+
+insert into tb_pessoas
+(codigo, nome, fone, email) values
+(1, "Huguinho", "1234-5678", "hugo@usjt.br");
+
+select * from tb_pessoas;
+
+
+insert into tb_pessoas
+(nome, fone, email) values
+("Zezinho", "5678-1234", "ze@usjt.br");
+
+
+insert into tb_pessoas
+(nome, fone, email) values
+("Luizinho", "2222-1234", "luis@usjt.br"),
+("Margarida", "2222-1234", "maga@usjt.br"),
+("Patinhas", "2222-4444", "patinhas@usjt.br");
+
+select nome, fone from tb_pessoas 
+        where codigo > 3
