@@ -1,12 +1,22 @@
 #create database db_pessoa;
 use db_pessoa;
-drop table tb_pessoas;
+
+#drop table tb_pessoas;
 create table tb_pessoas(
 	codigo int primary key auto_increment,
     nome varchar(60) not null,
     fone varchar(20),
     email varchar(60)
 );
+
+#drop table tb_usuario;
+CREATE TABLE tb_usuario 
+(id INT PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50), 
+email varchar(50),
+usuario VARCHAR(50) not null,
+senha VARCHAR(50),
+tipoUsu int);
 
 insert into tb_pessoas
 (codigo, nome, fone, email) values

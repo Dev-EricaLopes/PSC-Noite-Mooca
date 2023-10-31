@@ -1,5 +1,5 @@
 
-package com.mycompany.pessoa;
+package Cadastros;
 
 import DAO.ConnectionFactory;
 import java.sql.Connection;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.pessoa;
+package Cadastros;
 
 import DAO.ConnectionFactory;
 import java.sql.SQLException;
