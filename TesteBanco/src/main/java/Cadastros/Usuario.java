@@ -7,6 +7,7 @@ package Cadastros;
 import DAO.ConnectionFactory;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
@@ -119,6 +120,62 @@ public class Usuario {
             JOptionPane.showMessageDialog(null,"ERRO no cadastro do usuário!!!");
         }
     
-    } 
+    }
     
+    public void Consultar(){
+
+        String sql = "SELECT * FROM tb_usuario where usuario = ?";
+    
+         ConnectionFactory factory = new ConnectionFactory();
+        try (Connection c = factory.obtemConexao()){
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, usuario);
+            ResultSet rs = ps.executeQuery();
+            //5: itera sobre o resultado
+            while (rs.next()){
+            setNome(rs.getString("nome"));
+            setEmail(rs.getString("email"));
+            setSenha(rs.getString("senha"));
+            setTipoUsu(rs.getInt("tipoUsu"));
+
+            }
+    }
+    catch (Exception e){
+    e.printStackTrace();
+    }
+    }
+    
+    public int ValidarSenha(String usu, String senhat){
+
+        String sql = "SELECT * FROM tb_usuario where usuario = ? and senha = ?";
+         ConnectionFactory factory = new ConnectionFactory();
+        try (Connection c = factory.obtemConexao()){
+            PreparedStatement ps = c.prepareStatement(sql);
+            ps.setString(1, usu);
+            ps.setString(2, senhat);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next())
+            {
+                setNome(rs.getString("nome"));
+                setUsuario(rs.getString("usuario"));
+                setTipoUsu(rs.getInt("tipoUsu"));             
+                JOptionPane.showMessageDialog(null, "Olá " + nome);
+                return 0;
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(null, "ERRO!! Usuário e/ou Senha Inválido!");
+                return 1;
+            }   
+            
+
+        }
+        catch (Exception e){
+        e.printStackTrace();
+        return 99;
+        
+        }
+    
+    }
 }

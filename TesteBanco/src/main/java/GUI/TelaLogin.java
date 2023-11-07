@@ -4,6 +4,10 @@
  */
 package GUI;
 
+import Cadastros.Usuario;
+import DAO.ConnectionFactory;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author erica
@@ -68,6 +72,14 @@ public class TelaLogin extends javax.swing.JFrame {
         });
 
         txtSenha.setText("jPasswordField1");
+        txtSenha.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtSenhaFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtSenhaFocusLost(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -120,6 +132,25 @@ public class TelaLogin extends javax.swing.JFrame {
 
     private void btnLogarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogarActionPerformed
         // TODO add your handling code here:
+        
+        Usuario usu = new Usuario();
+        
+        String usuario = txtUsuario.getText();
+        String senha = txtSenha.getText();
+        
+   
+        int resp = usu.ValidarSenha(usuario, senha);  
+
+        JOptionPane.showMessageDialog(null,"resp - " + resp);
+        if (resp == 0)
+        {
+            TelaMenu dt = new TelaMenu();
+            dt.setVisible(true);
+            this.dispose();
+                
+        }
+
+        
     }//GEN-LAST:event_btnLogarActionPerformed
 
     private void ckSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ckSenhaActionPerformed
@@ -141,6 +172,22 @@ public class TelaLogin extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_ckSenhaActionPerformed
+
+    private void txtSenhaFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSenhaFocusGained
+        // TODO add your handling code here:
+          if (txtSenha.getText().equals(""))
+          {   
+             txtSenha.setText("");
+          }   
+    }//GEN-LAST:event_txtSenhaFocusGained
+
+    private void txtSenhaFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtSenhaFocusLost
+        // TODO add your handling code here:
+        if (txtSenha.getText().equals(""))
+        {
+            txtSenha.setText("Digite uma Senha");
+        }
+    }//GEN-LAST:event_txtSenhaFocusLost
 
     /**
      * @param args the command line arguments

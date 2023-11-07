@@ -21,6 +21,9 @@
               <Properties>
                 <Property name="text" type="java.lang.String" value="Consultar"/>
               </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btConsultarActionPerformed"/>
+              </Events>
             </MenuItem>
             <MenuItem class="javax.swing.JMenuItem" name="btAlteraSenha">
               <Properties>
@@ -48,7 +51,7 @@
   <SyntheticProperties>
     <SyntheticProperty name="menuBar" type="java.lang.String" value="jMenuBar2"/>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
-    <SyntheticProperty name="generateCenter" type="boolean" value="false"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
   </SyntheticProperties>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
@@ -68,21 +71,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                      <Component id="jLabel5" min="-2" pref="37" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" pref="218" max="-2" attributes="0"/>
-                      <Component id="jCheckBox1" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
-                      <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
-                      <Component id="cmbTipoUsu" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
-                      <Component id="jLabel2" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
-                      <Component id="txtUsuario" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
-                      <Component id="jLabel3" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
-                      <Component id="jLabel4" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
-                  </Group>
+                  <Component id="jLabel5" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="jLabel1" min="-2" pref="218" max="-2" attributes="0"/>
+                  <Component id="jCheckBox1" alignment="0" min="-2" pref="192" max="-2" attributes="0"/>
+                  <Component id="txtSenha" alignment="0" max="32767" attributes="0"/>
+                  <Component id="cmbTipoUsu" alignment="0" min="-2" pref="161" max="-2" attributes="0"/>
+                  <Component id="jLabel2" alignment="0" min="-2" pref="109" max="-2" attributes="0"/>
+                  <Component id="txtUsuario" alignment="0" min="-2" pref="269" max="-2" attributes="0"/>
+                  <Component id="jLabel3" alignment="0" min="-2" pref="67" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="0" min="-2" pref="114" max="-2" attributes="0"/>
                   <Component id="txtNome" max="32767" attributes="0"/>
                   <Component id="txtEmail" alignment="0" min="-2" pref="352" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="97" max="32767" attributes="0"/>
+              <EmptySpace pref="58" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
