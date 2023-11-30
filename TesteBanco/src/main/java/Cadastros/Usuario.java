@@ -5,6 +5,7 @@
 package Cadastros;
 
 import DAO.ConnectionFactory;
+import java.awt.List;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -178,4 +179,36 @@ public class Usuario {
         }
     
     }
+    
+    
+    public void listar (){
+        //1: Definir o comando SQL
+        String sql = "SELECT * FROM tb_usuario";
+        //2: Abrir uma conexão
+        ConnectionFactory factory = new ConnectionFactory();
+                
+        try (Connection c = factory.obtemConexao())
+        {
+            //3: Pré compila o comando
+            PreparedStatement ps = c.prepareStatement(sql);
+            //4: Executa o comando e guarda
+            //o resultado em um ResultSet
+            ResultSet rs = ps.executeQuery();
+            //5: itera sobre o resultado
+            while (rs.next()){
+                setNome(rs.getString("nome"));
+                setUsuario(rs.getString("usuario"));
+                setTipoUsu(rs.getInt("tipoUsu")); 
+                
+                
+                
+            }
+        }
+        catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    
+    
 }

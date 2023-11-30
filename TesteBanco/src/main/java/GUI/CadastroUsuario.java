@@ -45,6 +45,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
+        jCheckBoxMenuItem1 = new javax.swing.JCheckBoxMenuItem();
         btIncluir = new javax.swing.JMenuItem();
         btConsultar = new javax.swing.JMenuItem();
         btAlteraSenha = new javax.swing.JMenuItem();
@@ -53,11 +54,21 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtNome.setEnabled(false);
+
+        txtEmail.setEnabled(false);
+
+        txtUsuario.setEnabled(false);
+
         cmbTipoUsu.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Comum", "Administrador" }));
+        cmbTipoUsu.setEnabled(false);
 
         jLabel1.setText("Tipo Usuário");
 
+        txtSenha.setEnabled(false);
+
         jCheckBox1.setText("Mostrar senha");
+        jCheckBox1.setEnabled(false);
         jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBox1ActionPerformed(evt);
@@ -74,7 +85,17 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
         jMenu3.setText("Usuário");
 
+        jCheckBoxMenuItem1.setSelected(true);
+        jCheckBoxMenuItem1.setText("Novo");
+        jCheckBoxMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBoxMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu3.add(jCheckBoxMenuItem1);
+
         btIncluir.setText("Incluir");
+        btIncluir.setEnabled(false);
         btIncluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btIncluirActionPerformed(evt);
@@ -91,6 +112,12 @@ public class CadastroUsuario extends javax.swing.JFrame {
         jMenu3.add(btConsultar);
 
         btAlteraSenha.setText("Alterar Senha");
+        btAlteraSenha.setEnabled(false);
+        btAlteraSenha.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btAlteraSenhaActionPerformed(evt);
+            }
+        });
         jMenu3.add(btAlteraSenha);
 
         btExcluir.setText("Excluir");
@@ -167,6 +194,29 @@ public class CadastroUsuario extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+    private void Desabilita()
+    {
+        txtNome.setEnabled(false);
+        txtEmail.setEnabled(false);
+        txtUsuario.setEnabled(false);
+        txtSenha.setEnabled(false);
+        cmbTipoUsu.setEnabled(false);
+        jCheckBox1.setEnabled(false);
+        btIncluir.setEnabled(false);
+        btAlteraSenha.setEnabled(false);
+    }
+    
+    private void Habilita()
+    {
+        txtNome.setEnabled(true);
+        txtEmail.setEnabled(true);
+        txtUsuario.setEnabled(true);
+        txtSenha.setEnabled(true);
+        jCheckBox1.setEnabled(true);
+        cmbTipoUsu.setEnabled(true);
+    }
+    
+    
     private void Limpar()
     {
         txtNome.setText("");
@@ -209,20 +259,40 @@ public class CadastroUsuario extends javax.swing.JFrame {
 
     private void btConsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btConsultarActionPerformed
 
+        String txtUsu;
+        
+        txtUsu = JOptionPane.showInputDialog("Digite o nome do usuário que deseja consultar:");
+        
         // TODO add your handling code here:
         Usuario usu = new Usuario();
         
-        usu.setUsuario(txtUsuario.getText());
+        usu.setUsuario(txtUsu);
         
         usu.Consultar();  
         
         txtNome.setText(usu.getNome());
         txtEmail.setText(usu.getEmail());
-        //txtUsuario.setText("");
+        txtUsuario.setText(usu.getUsuario());
         txtSenha.setText(usu.getSenha());
         cmbTipoUsu.setSelectedIndex(usu.getTipoUsu());   
         
+        Desabilita();
+        btAlteraSenha.setEnabled(true);
+        
     }//GEN-LAST:event_btConsultarActionPerformed
+
+    private void jCheckBoxMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        Habilita();
+        btIncluir.setEnabled(true);
+        
+    }//GEN-LAST:event_jCheckBoxMenuItem1ActionPerformed
+
+    private void btAlteraSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAlteraSenhaActionPerformed
+        // TODO add your handling code here:
+        txtSenha.setEnabled(true);
+        jCheckBox1.setEnabled(true);
+    }//GEN-LAST:event_btAlteraSenhaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -254,9 +324,11 @@ public class CadastroUsuario extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CadastroUsuario().setVisible(true);
-            }
+                new CadastroUsuario().setVisible(true);   
+            } 
         });
+        
+
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -267,6 +339,7 @@ public class CadastroUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem btIncluir;
     private javax.swing.JComboBox<String> cmbTipoUsu;
     private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
